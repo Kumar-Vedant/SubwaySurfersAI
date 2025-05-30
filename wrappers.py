@@ -7,24 +7,24 @@ class SkipFrame(Wrapper):
         self.skip = skip
 
     def step(self, action):
-        total_reward = 0.0
+        # total_reward = 0.0
         done = False
 
         next_state, reward, done, trunc, info = self.env.step(action)
-        total_reward += reward
+        # total_reward += reward
 
         # take no action for the next n-1(skip) steps
         for _ in range(self.skip-1):
             # take the step
             next_state, reward, done, trunc, info = self.env.step(4)
-            total_reward += reward
+            # total_reward += reward
             if done:
                 break
         return next_state, reward, done, trunc, info
 
 # apply wrappers - SkipFrame and FrameStack
 def apply_wrappers(env):
-    # skip 4 frames (don't take and action for the next 3 frames)
+    # skip 4 frames (don't take any action for the next 3 frames)
     env = SkipFrame(env, skip=4)
     # stack 4 frames to give a sense of motion
     env = FrameStack(env, num_stack=4, lz4_compress=True)

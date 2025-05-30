@@ -17,7 +17,7 @@ class Game(Env):
         # setup game capture frame locations
         self.cap = mss()
         self.game_location = self.get_game_location()
-        self.done_location = {'top': self.game_location['top'] + 736, 'left': self.game_location['left'] + 210, 'width': 130, 'height': 46}
+        self.done_location = {'top': self.game_location['top'] + 736, 'left': self.game_location['left'] + 220, 'width': 120, 'height': 46}
 
         self.score = 0
         self.pause_button_sum = 3980
@@ -26,19 +26,20 @@ class Game(Env):
         ["adb", "shell"],
         stdin=subprocess.PIPE,
         text=True
-    )
+        )
 
     def step(self, action):
         # action_map = {
         #     0:'jump',
-        #     1:'roll',
-        #     2:'left'
+        #     1:'left',
+        #     2:'no_op'
         #     3:'right'
-        #     4:'no_op'
+        #     4:'roll'
         # }
-        if action < 4:
-            # press the button for the action given
-            self.take_action(action)
+        
+        
+        # press the button for the action given
+        self.take_action(action)
 
         # get the next step
         raw_state, new_state = self.get_observation() 
@@ -49,7 +50,9 @@ class Game(Env):
             done = False
             # set rewards
             reward = 0.1  # survival reward
-            # reward += 0 if action==4 else -1  # give reward for staying idle (to remove unnecessary actions)
+            # give reward for staying idle (to remove unnecessary actions)
+            if action==2:
+                reward += 0.05
             # reward for collecting coins
             reward += 1 if self.is_coin_collected(raw_state) else 0
         else:
@@ -145,7 +148,7 @@ class Game(Env):
         return abs(sum_pixels - self.pause_button_sum) <= 20
 
     def take_action(self, action):
-        # 0 - jump, 1 - roll, 2 - left, 3 - right
+        # 0 - jump, 1 - left, 3 - right, 4 - roll
         match action:
             case 0:
                 # swipe up
@@ -153,11 +156,6 @@ class Game(Env):
                 self.shell.stdin.flush()
                 return
             case 1:
-                # swipe down
-                self.shell.stdin.write(f"input swipe 600 1000 600 1800 10\n")
-                self.shell.stdin.flush()
-                return
-            case 2:
                 # swipe left
                 self.shell.stdin.write(f"input swipe 600 1800 300 1800 10\n")
                 self.shell.stdin.flush()
@@ -165,6 +163,11 @@ class Game(Env):
             case 3:
                 # swipe right
                 self.shell.stdin.write(f"input swipe 300 1800 600 1800 10\n")
+                self.shell.stdin.flush()
+                return
+            case 4:
+                # swipe down
+                self.shell.stdin.write(f"input swipe 600 1000 600 1800 10\n")
                 self.shell.stdin.flush()
                 return
 

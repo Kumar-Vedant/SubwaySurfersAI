@@ -8,11 +8,11 @@ class AgentNN(nn.Module):
 
         # add 3 convolutional layers with ReLU activation
         self.conv_layers = nn.Sequential(
-            nn.Conv2d(input_shape[0], 32, kernel_size=8, stride=4),
+            nn.Conv2d(input_shape[0], 16, kernel_size=8, stride=4),
             nn.ReLU(),
-            nn.Conv2d(32, 64, kernel_size=4, stride=2),
+            nn.Conv2d(16, 32, kernel_size=4, stride=2),
             nn.ReLU(),
-            nn.Conv2d(64, 64, kernel_size=3, stride=1),
+            nn.Conv2d(32, 64, kernel_size=3, stride=1),
             nn.ReLU()
         )
 
@@ -23,9 +23,9 @@ class AgentNN(nn.Module):
         self.network = nn.Sequential(
             self.conv_layers,
             nn.Flatten(),
-            nn.Linear(conv_out_size, 512),
+            nn.Linear(conv_out_size, 256),
             nn.ReLU(),
-            nn.Linear(512, n_actions)
+            nn.Linear(256, n_actions)
         )
         
         # if static target network, don't update network parameters

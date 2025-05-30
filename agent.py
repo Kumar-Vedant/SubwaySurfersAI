@@ -6,7 +6,7 @@ from tensordict import TensorDict
 from torchrl.data import TensorDictReplayBuffer, LazyMemmapStorage
 
 class Agent:
-    def __init__(self, input_dims, num_actions, lr=0.005, gamma=0.9, epsilon=1.0, eps_decay=0.9997, eps_min=0.1, replay_buffer_capacity=100_000, batch_size=32, sync_network_rate=500):
+    def __init__(self, input_dims, num_actions, lr=0.0005, gamma=0.9, epsilon=1.0, eps_decay=0.999995, eps_min=0.1, replay_buffer_capacity=10_000, batch_size=32, sync_network_rate=1000):
 
         self.num_actions = num_actions
         self.learn_step_counter = 0

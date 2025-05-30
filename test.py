@@ -124,3 +124,53 @@ def get_scrcpy_window_location():
             x, y, width, height = map(int, parts[2:6])  # Extract x, y, width, height
             return x, y, width, height
         
+import numpy as np
+import cv2
+
+# loaded_stack = np.load("./expert_data/jump/obs_500.npy")
+
+# print(loaded_stack)
+# print(loaded_stack.shape)
+
+# # loaded_stack[0] = np.fliplr(loaded_stack[0])
+# # img0 = loaded_stack[0]
+# # # # img0 = np.fliplr(img0)
+
+# img = cv2.imshow("Image", loaded_stack[0])
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+# import os
+
+# print(len(os.listdir("./expert_data/right")))
+
+# store_indexes = [len(os.listdir(os.path.join("/home/kumar-vedant/Documents/Development/subwaySurfersAI/expert_data", i))) for i in ["jump", "roll", "left", "right", "no_op"]]
+
+# print(store_indexes)
+
+
+
+
+# loop over all elements in the folder "roll"
+# store_index = 21576
+# for i in range(21576):
+#     loaded_stack = np.load(f"./expert_data/no_op/obs_{i}.npy")
+
+#     # for each element, flip all 4 frames
+#     loaded_stack[0] = np.fliplr(loaded_stack[0])
+#     loaded_stack[1] = np.fliplr(loaded_stack[1])
+#     loaded_stack[2] = np.fliplr(loaded_stack[2])
+#     loaded_stack[3] = np.fliplr(loaded_stack[3])
+
+#     # stack the flipped frames
+#     image_stack = np.stack([loaded_stack[0], loaded_stack[1], loaded_stack[2], loaded_stack[3]], axis=0)
+
+#     # Save the stack to a .npy file
+#     save_path = f"/home/kumar-vedant/Documents/Development/subwaySurfersAI/expert_data/no_op/obs_{store_index}.npy"
+#     np.save(save_path, image_stack)
+#     store_index += 1
+
+# from sklearn.model_selection import train_test_split
+# tr, val = train_test_split(data.label, stratify=data.label, test_size=0.1)
+
+# train_sampler = SubsetRandomSampler(train_indices)
+# valid_sampler = SubsetRandomSampler(val_indices)
