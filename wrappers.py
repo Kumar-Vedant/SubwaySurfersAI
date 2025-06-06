@@ -16,7 +16,7 @@ class SkipFrame(Wrapper):
         # take no action for the next n-1(skip) steps
         for _ in range(self.skip-1):
             # take the step
-            next_state, reward, done, trunc, info = self.env.step(4)
+            next_state, reward, done, trunc, info = self.env.step(2)
             # total_reward += reward
             if done:
                 break

@@ -126,6 +126,43 @@ def get_scrcpy_window_location():
         
 import numpy as np
 import cv2
+# from mss import mss
+
+# cap = mss()
+
+# def get_game_location():
+#         # find all window locations
+#         output = subprocess.check_output(["wmctrl", "-lG"], universal_newlines=True)
+
+#         # iterate through each output line to find the scrcpy window
+#         for line in output.splitlines():
+#             if "scrcpy" in line:
+#                 # extract x, y, width, height from the output line
+#                 window_id = line.split()[0]
+#                 break
+
+#         # get accurate absolute positions and dimensions using xwininfo
+#         xwininfo_output = subprocess.check_output(["xwininfo", "-id", window_id], universal_newlines=True)
+#         for line in xwininfo_output.splitlines():
+#             if "Absolute upper-left X" in line:
+#                 x = int(line.split(":")[1].strip())
+#             elif "Absolute upper-left Y" in line:
+#                 y = int(line.split(":")[1].strip())
+#             elif "Width" in line:
+#                 width = int(line.split(":")[1].strip())
+#             elif "Height" in line:
+#                 height = int(line.split(":")[1].strip())
+
+#         return {'top': y, 'left': x, 'width': width, 'height': height}
+
+# game_location = get_game_location()
+
+# raw = np.array(cap.grab(game_location))[:,:,:3]
+
+# crop to get only the relevant area
+# img = raw[180:600, :]
+# print(raw.shape)
+
 
 # loaded_stack = np.load("./expert_data/jump/obs_500.npy")
 
@@ -137,6 +174,7 @@ import cv2
 # # # # img0 = np.fliplr(img0)
 
 # img = cv2.imshow("Image", loaded_stack[0])
+# img = cv2.imshow("Image", img)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
 # import os

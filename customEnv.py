@@ -50,14 +50,11 @@ class Game(Env):
             done = False
             # set rewards
             reward = 0.1  # survival reward
-            # give reward for staying idle (to remove unnecessary actions)
-            if action==2:
-                reward += 0.05
             # reward for collecting coins
             reward += 1 if self.is_coin_collected(raw_state) else 0
         else:
             done = True
-            reward = 0
+            reward = -5
 
         return new_state, reward, done, False, info
 
