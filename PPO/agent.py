@@ -35,17 +35,15 @@ class Agent:
         
         # get the probability distribution over actions and the value of this state
         dist, value = self.network(state)
-        # print(dist.probs.detach().cpu().numpy())
 
         # get an action by sampling the probability distribution and calculate the log-probability of the action taken
         action = dist.sample()
 
         prob = torch.squeeze(dist.log_prob(action)).item()
+        # prob = dist.log_prob(action).item()
         action = torch.squeeze(action).item()
-        # print(action)
-        
-        value = torch.squeeze(value).item()
 
+        value = torch.squeeze(value).item()
 
         return action, prob, value
 
@@ -96,7 +94,7 @@ class Agent:
         # calculate advantages and returns
         next_state = torch.tensor(np.array(next_state), dtype=torch.float32).unsqueeze(0).to(self.network.device)
         _, value = self.network(next_state)
-        value = value.squeeze()
+        value = value.squeeze().detach()
         values = torch.cat([values, value.unsqueeze(0)], dim=0)
 
         advantages = self.calculate_advantage(rewards, values, dones)

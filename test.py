@@ -189,9 +189,9 @@ import cv2
 
 
 # loop over all elements in the folder "roll"
-# store_index = 21576
-# for i in range(21576):
-#     loaded_stack = np.load(f"./expert_data/no_op/obs_{i}.npy")
+# store_index = 3667
+# for i in range(3655):
+#     loaded_stack = np.load(f"./expert_data/right/obs_{i}.npy")
 
 #     # for each element, flip all 4 frames
 #     loaded_stack[0] = np.fliplr(loaded_stack[0])
@@ -203,7 +203,7 @@ import cv2
 #     image_stack = np.stack([loaded_stack[0], loaded_stack[1], loaded_stack[2], loaded_stack[3]], axis=0)
 
 #     # Save the stack to a .npy file
-#     save_path = f"/home/kumar-vedant/Documents/Development/subwaySurfersAI/expert_data/no_op/obs_{store_index}.npy"
+#     save_path = f"/home/kumar-vedant/Documents/Development/subwaySurfersAI/expert_data/left/obs_{store_index}.npy"
 #     np.save(save_path, image_stack)
 #     store_index += 1
 

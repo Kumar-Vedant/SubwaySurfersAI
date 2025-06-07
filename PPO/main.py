@@ -31,7 +31,7 @@ env = apply_wrappers(env)
 
 if TRAINING:
     agent = Agent(input_dims=env.observation_space.shape, num_actions=env.action_space.n)
-    agent.load_model("/home/kumar-vedant/Documents/Development/subwaySurfersAI/PPO/classification_model_0.pt")
+    agent.load_model("/home/kumar-vedant/Documents/Development/subwaySurfersAI/models/07-06-2025-03_14_27/model_600.pt")
 
 else:
     # set exploration off (very low)
