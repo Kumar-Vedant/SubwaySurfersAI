@@ -4,6 +4,7 @@ A CNN-based Reinforcement Learning agent to play Subway Surfers directly on an A
 
 ## Demo
 
+Here's the AI playing the game at different training stages:
 <p align="center">
   <img src="demo/demo.gif"/>
 </p>
