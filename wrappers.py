@@ -25,7 +25,7 @@ class SkipFrame(Wrapper):
 # apply wrappers - SkipFrame and FrameStack
 def apply_wrappers(env):
     # skip 4 frames (don't take any action for the next 3 frames)
-    env = SkipFrame(env, skip=4)
+    env = SkipFrame(env, skip=6)
     # stack 4 frames to give a sense of motion
     env = FrameStack(env, num_stack=4, lz4_compress=True)
 

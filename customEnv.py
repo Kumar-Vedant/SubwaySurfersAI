@@ -49,7 +49,7 @@ class Game(Env):
         if self.pause_button(raw_state):
             done = False
             # set rewards
-            reward = 0.1  # survival reward
+            reward = 0.4 if action==2 else 0 # survival reward
             # reward for collecting coins
             reward += 1 if self.is_coin_collected(raw_state) else 0
         else:
@@ -154,12 +154,12 @@ class Game(Env):
                 return
             case 1:
                 # swipe left
-                self.shell.stdin.write(f"input swipe 600 1800 300 1800 10\n")
+                self.shell.stdin.write(f"input swipe 600 2000 300 2000 10\n")
                 self.shell.stdin.flush()
                 return
             case 3:
                 # swipe right
-                self.shell.stdin.write(f"input swipe 300 1800 600 1800 10\n")
+                self.shell.stdin.write(f"input swipe 300 2000 600 2000 10\n")
                 self.shell.stdin.flush()
                 return
             case 4:

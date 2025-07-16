@@ -31,17 +31,16 @@ env = apply_wrappers(env)
 
 if TRAINING:
     agent = Agent(input_dims=env.observation_space.shape, num_actions=env.action_space.n)
-    agent.load_model("/home/kumar-vedant/Documents/Development/subwaySurfersAI/models/07-06-2025-03_14_27/model_600.pt")
+    agent.load_model("/home/kumar-vedant/Documents/Development/subwaySurfersAI/models/02-07-2025-15_52_28/model_700.pt")
 
 else:
     # set exploration off (very low)
     agent = Agent(input_dims=env.observation_space.shape, num_actions=env.action_space.n)
     # load the trained model
-    ckpt_name = "26-12-2024-02_20_02/model_2500.pt"
+    # ckpt_name = "26-12-2024-02_20_02/model_2500.pt"
     # agent.load_model(os.path.join("/home/kumar-vedant/Documents/Development/subwaySurfersAI/models", ckpt_name))
     # agent.load_model("/home/kumar-vedant/Documents/Development/subwaySurfersAI/classification_model_0.pt")
-    agent.load_model("/home/kumar-vedant/Documents/Development/subwaySurfersAI/models/29-05-2025-01_44_32/model_1400.pt")
-
+    agent.load_model("/home/kumar-vedant/Documents/Development/subwaySurfersAI/models/02-07-2025-15_52_28/model_700.pt")
 
 # enable interactive mode of matplotlib
 plt.ion()

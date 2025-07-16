@@ -4,7 +4,7 @@ from neural_net import AgentNN
 
 
 class Agent:
-    def __init__(self, input_dims, num_actions, lr=1e-3, gamma=0.95, lam=0.95, policy_clip=0.2, value_coef=0.5, entropy_coef=0.01, obs_size=2048, batch_size=64, n_epochs=8):
+    def __init__(self, input_dims, num_actions, lr=6e-4, gamma=0.95, lam=0.95, policy_clip=0.2, value_coef=0.5, entropy_coef=0.01, obs_size=1024, batch_size=64, n_epochs=6):
 
         self.num_actions = num_actions
         self.learn_step_counter = 0
@@ -98,7 +98,7 @@ class Agent:
         values = torch.cat([values, value.unsqueeze(0)], dim=0)
 
         advantages = self.calculate_advantage(rewards, values, dones)
-        advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
+        # advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
 
         returns = advantages + values[:-1]
 
